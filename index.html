@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Sacred Journey | Forever</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;500&display=swap');
+        body { background: #050505; color: white; font-family: 'Outfit', sans-serif; overflow: hidden; }
+        .serif { font-family: 'Cinzel', serif; }
+        .page { display: none; height: 100vh; width: 100%; position: absolute; top: 0; left: 0; padding: 2rem; }
+        .active-page { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2rem; }
+        .nav-btn { background: linear-gradient(45deg, #e11d48, #fb7185); transition: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: HOME -->
+    <div id="page1" class="page active-page animate__animated animate__fadeIn">
+        <span class="text-rose-500 tracking-[0.5em] text-xs uppercase mb-4">Official Commitment</span>
+        <h1 class="serif text-5xl md:text-7xl mb-8 text-center">Forever Starts Now</h1>
+        <button onclick="nextPage(2)" class="nav-btn px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm shadow-lg shadow-rose-500/20">Begin the Journey</button>
+    </div>
+
+    <!-- PAGE 2: THE JOURNEY -->
+    <div id="page2" class="page">
+        <div class="glass p-10 max-w-2xl text-center">
+            <h2 class="serif text-3xl text-rose-400 mb-6">The Start of Us</h2>
+            <p class="text-gray-400 text-lg leading-relaxed italic">"Jab se tum meri zindagi mein ayi ho, sab kuch badal gaya hai. Hamara ye rishta mere liye dunya ki sab se qeemti cheez hai."</p>
+            <button onclick="nextPage(3)" class="mt-10 nav-btn px-8 py-3 rounded-full">Next: My Promise</button>
+        </div>
+    </div>
+
+    <!-- PAGE 3: THE PROMISE (LOYALTY) -->
+    <div id="page3" class="page">
+        <div class="glass p-10 max-w-2xl text-center">
+            <h2 class="serif text-3xl text-rose-500 mb-6">Absolute Loyalty</h2>
+            <p class="text-gray-300 text-xl mb-6">"Main wada karta hoon ke mere dil mein tumhare ilawa koi nahi ayega. No cheating, no lies, only pure trust."</p>
+            <div class="flex justify-center gap-4">
+                <button onclick="nextPage(4)" class="nav-btn px-8 py-3 rounded-full">Next: Our Goal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: THE GOAL (NIKAH) -->
+    <div id="page4" class="page">
+        <div class="glass p-10 max-w-2xl text-center">
+            <h2 class="serif text-3xl text-rose-400 mb-6">The Destination: Nikah</h2>
+            <p class="text-gray-400 text-lg">"Mera maqsad sirf dosti ya relation nahi, balki tumhe apna 'Halal' humsafar banana hai. Inshallah, hum jald aik honge."</p>
+            <button onclick="nextPage(5)" class="mt-10 nav-btn px-8 py-3 rounded-full">See Our Future</button>
+        </div>
+    </div>
+
+    <!-- PAGE 5: SPECIAL MESSAGE -->
+    <div id="page5" class="page">
+        <div class="text-center">
+            <div class="text-6xl mb-6 animate__animated animate__heartBeat animate__infinite">💍</div>
+            <h2 class="serif text-4xl mb-4">You Are My Destiny</h2>
+            <p class="text-zinc-500 max-w-md mx-auto mb-10 text-sm tracking-widest">EVERY HEARTBEAT OF MINE BELONGS TO YOU ALONE.</p>
+            <button onclick="nextPage(6)" class="nav-btn px-8 py-3 rounded-full">Final Words</button>
+        </div>
+    </div>
+
+    <!-- PAGE 6: THE FINAL VOW -->
+    <div id="page6" class="page text-center">
+        <div class="glass p-12">
+            <h2 class="serif text-4xl text-rose-500 mb-8">Official Commitment</h2>
+            <div class="space-y-4 text-zinc-300 italic mb-10">
+                <p>"Main Abdul Mateen, wada karta hoon..."</p>
+                <p>"Ke main hamesha loyal rahoonga."</p>
+                <p>"Aur humara agla qadam Nikah hoga."</p>
+            </div>
+            <button onclick="nextPage(1)" class="text-zinc-500 border-b border-zinc-800 hover:text-white transition">Start Over</button>
+        </div>
+    </div>
+
+    <!-- ADVANCED JS MULTI-PAGE LOGIC -->
+    <script>
+        function nextPage(pageNumber) {
+            // Tamam pages se 'active-page' hatana
+            const allPages = document.querySelectorAll('.page');
+            const currentPage = document.querySelector('.active-page');
+
+            // Current page ko exit animation dena
+            currentPage.classList.add('animate__animated', 'animate__fadeOutLeft');
+
+            setTimeout(() => {
+                allPages.forEach(p => {
+                    p.classList.remove('active-page', 'animate__animated', 'animate__fadeInRight', 'animate__fadeOutLeft');
+                });
+
+                // Agle page ko active karna
+                const targetPage = document.getElementById('page' + pageNumber);
+                targetPage.classList.add('active-page', 'animate__animated', 'animate__fadeInRight');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
